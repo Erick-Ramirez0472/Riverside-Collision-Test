@@ -1,0 +1,16 @@
+{
+  "name": "riverside-collision-repair",
+  "version": "1.0.0",
+  "description": "Riverside Collision Repair website with quote request form",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "devDependencies": {
+    "vercel": "^34.0.0"
+  }
+}
