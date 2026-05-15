@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Location | Riverside Collision Repair</title>
+  <meta name="description" content="Visit Riverside Collision Repair at 1649 N 550 W, Provo, Utah 84660." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #d42b2b;
+      --red-dark: #a81f1f;
+      --cyan: #3ad4f5;
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark2: #1a1a1a;
+      --dark3: #222222;
+      --gray: #9b9b9b;
+      --light: #e8e8e8;
+      --white: #ffffff;
+      --font-head: 'Barlow Condensed', sans-serif;
+      --font-body: 'Barlow', sans-serif;
+    }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      min-height: 100vh;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.35;
+    }
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 86px;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10,10,10,0.94);
+      border-bottom: 1px solid rgba(58,212,245,0.15);
+      backdrop-filter: blur(12px);
+    }
+    .brand-logo {
+      color: var(--white);
+      text-decoration: none;
+      font-family: var(--font-head);
+      font-size: 1.45rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 1;
+      display: inline-flex;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+    .brand-logo img {
+      width: 190px;
+      height: 70px;
+      object-fit: cover;
+      object-position: center 27%;
+    }
+    .brand-fallback {
+      display: inline-flex;
+      flex-direction: column;
+    }
+    .brand-fallback .accent { color: var(--cyan); font-size: 0.72em; }
+    .brand-fallback .small { font-size: 0.7em; }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      color: var(--light);
+      text-decoration: none;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--cyan); }
+    .nav-cta {
+      background: var(--red);
+      color: var(--white) !important;
+      padding: 0.5rem 1.4rem;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    }
+    main {
+      padding: 150px 2rem 5rem;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .location-header {
+      margin-bottom: 2.5rem;
+    }
+    .section-label {
+      font-family: var(--font-head);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.75rem;
+    }
+    .accent-line {
+      display: inline-block;
+      width: 40px;
+      height: 2px;
+      background: var(--red);
+      vertical-align: middle;
+      margin-right: 0.75rem;
+    }
+    h1 {
+      font-family: var(--font-head);
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 900;
+      line-height: 0.9;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    h1 span { color: var(--cyan); }
+    .lead {
+      max-width: 620px;
+      color: var(--gray);
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+    .location-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 2rem;
+      align-items: stretch;
+    }
+    .info-panel {
+      background: var(--dark2);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-top: 2px solid var(--cyan);
+      padding: 2rem;
+    }
+    .info-panel h2 {
+      font-family: var(--font-head);
+      font-size: 1.5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .contact-item strong {
+      font-family: var(--font-head);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .contact-item a,
+    .contact-item span {
+      color: var(--light);
+      text-decoration: none;
+      line-height: 1.5;
+    }
+    .contact-item a:hover { color: var(--cyan); }
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 1.5rem;
+    }
+    .btn-primary {
+      background: var(--red);
+      color: var(--white);
+      clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    }
+    .btn-secondary {
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+    }
+    .map-panel {
+      min-height: 520px;
+      background: var(--dark2);
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+    .map-panel iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 520px;
+      border: 0;
+      filter: grayscale(0.2) contrast(1.05);
+    }
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      background: var(--dark2);
+      color: var(--gray);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+    @media (max-width: 900px) {
+      nav { height: 82px; padding: 0 1rem; }
+      .brand-logo img { width: 160px; height: 64px; }
+      .nav-links { gap: 1rem; font-size: 0.9rem; }
+      .location-grid { grid-template-columns: 1fr; }
+      .map-panel,
+      .map-panel iframe { min-height: 420px; }
+    }
+    @media (max-width: 700px) {
+      .nav-links a:not(.nav-cta) { display: none; }
+      main { padding: 128px 1rem 4rem; }
+      .info-panel { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="brand-logo" aria-label="Riverside Collision Repair">
+      <img src="riversidelogo.png" alt="" onload="this.nextElementSibling.hidden = true" onerror="this.hidden = true" />
+      <span class="brand-fallback">Riverside <span class="accent">Collision</span> <span class="small">Repair</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#why">Why Us</a></li>
+      <li><a href="location.html" class="active">Location</a></li>
+      <li><a href="index.html#quote" class="nav-cta">Free Quote</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="container">
+      <div class="location-header">
+        <div class="section-label"><span class="accent-line"></span>Visit Riverside</div>
+        <h1>Our <span>Location</span></h1>
+        <p class="lead">Stop by Riverside Collision Repair in Provo for a repair estimate, insurance claim support, or to talk through your vehicle damage with the team.</p>
+      </div>
+
+      <div class="location-grid">
+        <section class="info-panel" aria-labelledby="location-info-title">
+          <h2 id="location-info-title">Shop Details</h2>
+          <div class="contact-list">
+            <div class="contact-item">
+              <strong>Address</strong>
+              <a href="https://www.google.com/maps/search/?api=1&query=1649%20N%20550%20W%2C%20Provo%2C%20UT%2084660" target="_blank" rel="noopener">1649 N 550 W<br />Provo, UT 84660</a>
+            </div>
+            <div class="contact-item">
+              <strong>Phone</strong>
+              <a href="tel:+18013734900">(801) 373-4900</a>
+            </div>
+            <div class="contact-item">
+              <strong>Hours</strong>
+              <span>Mon-Fri 8AM-6PM<br />Sat 9AM-3PM</span>
+            </div>
+          </div>
+          <div class="actions">
+            <a class="btn btn-primary" href="index.html#quote">Get a Free Quote</a>
+            <a class="btn btn-secondary" href="https://www.google.com/maps/dir/?api=1&destination=1649%20N%20550%20W%2C%20Provo%2C%20UT%2084660" target="_blank" rel="noopener">Get Directions</a>
+          </div>
+        </section>
+
+        <section class="map-panel" aria-label="Map to Riverside Collision Repair">
+          <iframe
+            title="Map to Riverside Collision Repair"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=1649%20N%20550%20W%2C%20Provo%2C%20UT%2084660&output=embed">
+          </iframe>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2026 Riverside Collision Repair. 1649 N 550 W, Provo, UT 84660.
+  </footer>
+</body>
+</html>
