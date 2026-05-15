@@ -172,13 +172,13 @@
     .hero-comparisons {
       position: absolute;
       right: clamp(1.25rem, 4vw, 4.5rem);
-      top: 12%;
-      width: min(58vw, 860px);
-      max-height: 78vh;
+      top: 50%;
+      transform: translateY(-50%);
+      width: min(66vw, 990px);
       z-index: 1;
       display: grid;
       grid-template-rows: 1fr 1fr;
-      gap: clamp(1rem, 4vh, 2.25rem);
+      gap: clamp(2.1rem, 6vh, 4rem);
     }
     .hero-comparison-row {
       display: grid;
@@ -188,7 +188,7 @@
     .hero-photo {
       position: relative;
       aspect-ratio: 16 / 10;
-      min-height: clamp(185px, 27vh, 315px);
+      min-height: clamp(215px, 30vh, 360px);
       background: var(--dark2);
       border: 1px solid rgba(255,255,255,0.1);
       overflow: hidden;
@@ -805,7 +805,7 @@
       .nav-links { display: none; flex-direction: column; position: fixed; top: 82px; left: 0; right: 0; background: var(--dark2); padding: 1.5rem 2rem; gap: 1rem; z-index: 99; border-bottom: 1px solid rgba(255,255,255,0.08); }
       .nav-links.open { display: flex; }
       .nav-toggle { display: flex; }
-      .hero-comparisons { position: relative; right: auto; top: auto; width: 100%; gap: 1rem; margin: 1.5rem 0; }
+      .hero-comparisons { position: relative; right: auto; top: auto; transform: none; width: 100%; gap: 1rem; margin: 1.5rem 0; }
       .hero-comparison-row { gap: 0.75rem; }
       .hero-photo { min-height: 160px; }
       .stats-inner { grid-template-columns: repeat(2, 1fr); }
