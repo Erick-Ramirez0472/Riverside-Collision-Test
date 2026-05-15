@@ -70,12 +70,14 @@
       text-transform: uppercase;
       line-height: 1;
       display: inline-flex;
-      flex-direction: column;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.8rem;
       flex-shrink: 0;
     }
     .brand-logo img {
-      width: 190px;
-      height: 70px;
+      width: 88px;
+      height: 58px;
       object-fit: cover;
       object-position: center 27%;
     }
@@ -681,6 +683,10 @@
       gap: 3rem;
     }
     .footer-logo { margin-bottom: 1rem; }
+    .footer-logo.brand-logo {
+      font-size: 1.9rem;
+      display: inline-flex;
+    }
     .footer-about { color: var(--gray); font-size: 0.875rem; line-height: 1.6; max-width: 260px; }
     .footer-col h4 {
       font-family: var(--font-head);
@@ -734,7 +740,8 @@
     /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
       nav { height: 82px; padding: 0 1rem; }
-      .brand-logo img { width: 160px; height: 64px; }
+      .brand-logo { font-size: 1.15rem; gap: 0.55rem; }
+      .brand-logo img { width: 72px; height: 52px; }
       .nav-links { display: none; flex-direction: column; position: fixed; top: 82px; left: 0; right: 0; background: var(--dark2); padding: 1.5rem 2rem; gap: 1rem; z-index: 99; border-bottom: 1px solid rgba(255,255,255,0.08); }
       .nav-links.open { display: flex; }
       .nav-toggle { display: flex; }
@@ -759,12 +766,13 @@
   <!-- NAV -->
   <nav>
     <a href="index.html" class="brand-logo" aria-label="Riverside Collision Repair">
-      <img src="riversidelogo.png" alt="" onload="this.nextElementSibling.hidden = true" onerror="this.hidden = true" />
+      <img src="riversidelogo.png" alt="" onerror="this.hidden = true" />
       <span class="brand-fallback">Riverside <span class="accent">Collision</span> <span class="small">Repair</span></span>
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#services">Services</a></li>
       <li><a href="#why">Why Us</a></li>
+      <li><a href="about.html">About</a></li>
       <li><a href="location.html">Location</a></li>
       <li><a href="#quote">Contact</a></li>
       <li><a href="#quote" class="nav-cta">Free Quote</a></li>
@@ -855,8 +863,8 @@
           <span class="service-icon">
             <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
           </span>
-          <h3>Dent Removal</h3>
-          <p>Paintless dent repair and traditional methods to eliminate dents, dings, and hail damage quickly and cost-effectively.</p>
+          <h3>Dent & Panel Repair</h3>
+          <p>Traditional dent, ding, and panel repair performed with careful bodywork, refinishing, and proper repair methods.</p>
         </div>
 
         <div class="service-card">
@@ -912,7 +920,7 @@
               </div>
               <div class="feature-text">
                 <h4>OEM Parts Available</h4>
-                <p>We use genuine or OEM-equivalent parts to ensure proper fit, finish, and safety performance.</p>
+                <p>We push hard for OEM parts whenever possible because proper fit, finish, and safety matter. Insurance has the final say, but we advocate for the best repair path.</p>
               </div>
             </div>
             <div class="feature">
@@ -942,7 +950,7 @@
                 <div class="step-num">02</div>
                 <div class="step-info">
                   <h5>Insurance Coordination</h5>
-                  <p>We handle all communication with your insurer</p>
+                  <p>After receiving your insurance estimate, we handle communication with your insurer</p>
                 </div>
               </div>
               <div class="step-divider"></div>
@@ -999,7 +1007,7 @@
             </div>
             <div class="contact-item">
               <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              <span>Mon–Fri 8AM–6PM · Sat 9AM–3PM</span>
+              <span>Mon-Fri 8:30AM-5:30PM</span>
             </div>
           </div>
         </div>
@@ -1084,7 +1092,6 @@
     <div class="footer-inner">
       <div>
         <div class="footer-logo brand-logo" aria-label="Riverside Collision Repair">
-          <img src="riversidelogo.png" alt="" onload="this.nextElementSibling.hidden = true" onerror="this.hidden = true" />
           <span class="brand-fallback">Riverside <span class="accent">Collision</span> <span class="small">Repair</span></span>
         </div>
         <p class="footer-about">Professional collision repair serving Utah County and the greater Salt Lake area. Excellence in every repair, every time.</p>
@@ -1095,7 +1102,7 @@
           <li><a href="#services">Collision Repair</a></li>
           <li><a href="#services">Paint & Refinishing</a></li>
           <li><a href="#services">Frame Straightening</a></li>
-          <li><a href="#services">Dent Removal</a></li>
+          <li><a href="#services">Dent & Panel Repair</a></li>
           <li><a href="#services">Insurance Claims</a></li>
         </ul>
       </div>
@@ -1104,6 +1111,7 @@
         <ul class="footer-links">
           <li><a href="#why">Why Choose Us</a></li>
           <li><a href="#quote">Get a Quote</a></li>
+          <li><a href="about.html">About Us</a></li>
           <li><a href="location.html">Location</a></li>
           <li><a href="mailto:info@riversidecollision.com">Contact Us</a></li>
           <li><a href="tel:+18013734900">Call Us</a></li>

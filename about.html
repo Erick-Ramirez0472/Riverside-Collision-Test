@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Riverside Collision Repair</title>
+  <meta name="description" content="Learn about Riverside Collision Repair, serving Provo and Utah County with collision repair, maintenance, and high-end vehicle care since 1988." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #d42b2b;
+      --cyan: #3ad4f5;
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark2: #1a1a1a;
+      --dark3: #222222;
+      --gray: #9b9b9b;
+      --light: #e8e8e8;
+      --white: #ffffff;
+      --font-head: 'Barlow Condensed', sans-serif;
+      --font-body: 'Barlow', sans-serif;
+    }
+    body {
+      min-height: 100vh;
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.35;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    }
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 86px;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10,10,10,0.94);
+      border-bottom: 1px solid rgba(58,212,245,0.15);
+      backdrop-filter: blur(12px);
+    }
+    .brand-logo {
+      color: var(--white);
+      text-decoration: none;
+      font-family: var(--font-head);
+      font-size: 1.45rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 1;
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.8rem;
+      flex-shrink: 0;
+    }
+    .brand-logo img {
+      width: 88px;
+      height: 58px;
+      object-fit: cover;
+      object-position: center 27%;
+    }
+    .brand-fallback {
+      display: inline-flex;
+      flex-direction: column;
+    }
+    .brand-fallback .accent { color: var(--cyan); font-size: 0.72em; }
+    .brand-fallback .small { font-size: 0.7em; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--light);
+      text-decoration: none;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--cyan); }
+    .nav-cta {
+      background: var(--red);
+      color: var(--white) !important;
+      padding: 0.5rem 1.4rem;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    }
+    main {
+      padding: 150px 2rem 5rem;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-family: var(--font-head);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.75rem;
+    }
+    .accent-line {
+      display: inline-block;
+      width: 40px;
+      height: 2px;
+      background: var(--red);
+      vertical-align: middle;
+      margin-right: 0.75rem;
+    }
+    h1 {
+      font-family: var(--font-head);
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 900;
+      line-height: 0.9;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    h1 span { color: var(--cyan); }
+    .lead {
+      max-width: 680px;
+      color: var(--gray);
+      line-height: 1.7;
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+    }
+    .photo-slot {
+      position: relative;
+      min-height: 430px;
+      margin-bottom: 3rem;
+      background:
+        linear-gradient(135deg, rgba(58,212,245,0.12), transparent 42%),
+        linear-gradient(315deg, rgba(212,43,43,0.16), transparent 45%),
+        var(--dark2);
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+    }
+    .photo-slot::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-top: 2px solid var(--cyan);
+      pointer-events: none;
+    }
+    .photo-slot img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .photo-placeholder {
+      position: relative;
+      z-index: 1;
+      max-width: 520px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .photo-placeholder strong {
+      display: block;
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .photo-placeholder span {
+      color: var(--gray);
+      line-height: 1.6;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.45fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .story {
+      background: var(--dark2);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 2rem;
+    }
+    .story p {
+      color: var(--light);
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+    }
+    .story p:last-child { margin-bottom: 0; }
+    .side-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .badge-card,
+    .fact-card {
+      background: var(--dark2);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 1.5rem;
+    }
+    .badge-card {
+      border-top: 2px solid var(--red);
+    }
+    .badge-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 120px;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(58,212,245,0.28);
+      background: rgba(58,212,245,0.08);
+      color: var(--cyan);
+      font-family: var(--font-head);
+      font-size: 1.6rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .badge-card h2,
+    .fact-card h2 {
+      font-family: var(--font-head);
+      font-size: 1.35rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .badge-card p,
+    .fact-card p {
+      color: var(--gray);
+      line-height: 1.65;
+    }
+    .fact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+    .fact-list li {
+      color: var(--light);
+      line-height: 1.5;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding-bottom: 0.9rem;
+    }
+    .fact-list li:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+    .fact-list strong {
+      display: block;
+      color: var(--cyan);
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.15rem;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 1.5rem;
+    }
+    .btn-primary {
+      background: var(--red);
+      color: var(--white);
+      clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    }
+    .btn-secondary {
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+    }
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      background: var(--dark2);
+      color: var(--gray);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+    @media (max-width: 900px) {
+      nav { height: 82px; padding: 0 1rem; }
+      .brand-logo { font-size: 1.15rem; gap: 0.55rem; }
+      .brand-logo img { width: 72px; height: 52px; }
+      .nav-links { gap: 1rem; font-size: 0.9rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .photo-slot { min-height: 340px; }
+    }
+    @media (max-width: 760px) {
+      .nav-links a:not(.nav-cta) { display: none; }
+      main { padding: 128px 1rem 4rem; }
+      .story,
+      .badge-card,
+      .fact-card { padding: 1.35rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="brand-logo" aria-label="Riverside Collision Repair">
+      <img src="riversidelogo.png" alt="" onerror="this.hidden = true" />
+      <span class="brand-fallback">Riverside <span class="accent">Collision</span> <span class="small">Repair</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#why">Why Us</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="location.html">Location</a></li>
+      <li><a href="index.html#quote" class="nav-cta">Free Quote</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="container">
+      <div class="section-label"><span class="accent-line"></span>About Riverside</div>
+      <h1>Built on <span>Excellence</span></h1>
+      <p class="lead">Since 1988, Riverside Collision Repair has served Utah County with collision repair, maintenance, and a customer experience built on skill, honesty, and careful work.</p>
+
+      <section class="photo-slot" aria-label="Waiting room photo">
+        <img src="waiting-room.jpg" alt="Riverside Collision Repair waiting room" onerror="this.hidden = true" />
+        <div class="photo-placeholder">
+          <strong>Waiting Room Photo</strong>
+          <span>Add a photo named <code>waiting-room.jpg</code> to this folder and it will appear here.</span>
+        </div>
+      </section>
+
+      <div class="about-grid">
+        <article class="story">
+          <p>We began in 1988 as a collision repair shop. Our clients soon began bringing their vehicles to us for second opinions on maintenance quotes from other shops. After years of giving second opinions on quotes, and feeling that in most cases those customers were being overcharged, we added maintenance to our side of the business. We have been offering both collision and maintenance services ever since.</p>
+
+          <p>In 2014, we moved to a larger location. We pride ourselves on offering a quality experience, not only with the care we provide for your vehicles, but your personal experience as well. Owner Ron Fox is a staple in the shop. He works directly with clients to understand their concerns and help them understand their options. He also works directly with his team and on the vehicles.</p>
+
+          <p>We are proud of the quality of our work. The vehicles that we send out of our shop are our resume and proof that we stand behind our goal of excellence. Our technicians are highly experienced; each has at least ten years of experience before they start at our shop. They are people who are passionate about cars and love being in this industry. That is why, among our loyal customers, we have auto dealers that send us all of their collision work.</p>
+
+          <p>Our painter has been with us since the beginning. We use only high-quality, European, water-based paints that perfectly match the original color of each car.</p>
+
+          <p>We have a long reputation with high-end cars, too. We are the exclusive maintenance and repair shop for many clients who are collectors. Our customers trust us with their Porsches, Aston Martins, Lamborghinis, and Ferraris, among others.</p>
+
+          <p>Owner Ron Fox began his career at an early age, helping his father, who recycled cars. He then worked for a Porsche/Audi dealership in Utah County. He has a special fondness and skill with German cars because so much of his early education on vehicles started with Porsches and Audis. Ron knew he would open his own shop one day, and after 26 years his shop is still going strong.</p>
+
+          <p>Our shop is a part of your community. We are a regular sponsor for the UVU annual car show to support students of UVU studying in our field, and we also participate in and support other local car shows.</p>
+
+          <div class="actions">
+            <a class="btn btn-primary" href="index.html#quote">Request a Quote</a>
+            <a class="btn btn-secondary" href="location.html">Visit the Shop</a>
+          </div>
+        </article>
+
+        <aside class="side-stack">
+          <section class="badge-card" aria-labelledby="gephardt-title">
+            <div class="badge-mark">Gephardt<br />Approved</div>
+            <h2 id="gephardt-title">Trusted Business</h2>
+            <p>Riverside Collision Repair is proud to be one of the few auto collision repair shops in Utah recognized as Gephardt Approved.</p>
+          </section>
+
+          <section class="fact-card" aria-labelledby="highlights-title">
+            <h2 id="highlights-title">Shop Highlights</h2>
+            <ul class="fact-list">
+              <li><strong>Since 1988</strong>Collision repair, maintenance, and trusted second opinions.</li>
+              <li><strong>Experienced Team</strong>Technicians with deep experience and a passion for cars.</li>
+              <li><strong>High-End Care</strong>Trusted with Porsche, Aston Martin, Lamborghini, Ferrari, and other collector vehicles.</li>
+              <li><strong>Community Support</strong>Regular supporter of UVU and local car shows.</li>
+            </ul>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2026 Riverside Collision Repair. 1649 N 550 W, Provo, UT 84660.
+  </footer>
+</body>
+</html>
