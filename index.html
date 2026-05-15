@@ -552,6 +552,39 @@
     select { cursor: pointer; }
     select option { background: var(--dark3); }
     textarea { resize: vertical; min-height: 100px; }
+    input[type="file"] {
+      border-style: dashed;
+      cursor: pointer;
+    }
+
+    .checkbox-card {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+    .checkbox-card input {
+      width: auto;
+      margin-top: 0.25rem;
+      accent-color: var(--red);
+      -webkit-appearance: auto;
+    }
+    .checkbox-card p {
+      color: var(--gray);
+      font-size: 0.82rem;
+      line-height: 1.5;
+      margin-top: 0.2rem;
+    }
+    .insurance-fields {
+      display: none;
+      border-left: 3px solid var(--red);
+      background: rgba(212,43,43,0.07);
+      padding: 1rem;
+      margin-top: 1rem;
+    }
 
     .field-error {
       font-size: 0.75rem;
@@ -966,25 +999,15 @@
         </div>
 
         <!-- FORM -->
-        <form class="quote-form" id="quoteForm" action="https://riverside-quote-form.erickramirez0472.workers.dev" method="post" novalidate>
+        <form class="quote-form" id="quoteForm" action="https://riverside-quote-form.erickramirez0472.workers.dev" method="post" enctype="multipart/form-data" novalidate>
           <div class="form-title">Quote Request</div>
-          <p class="form-sub">All fields marked * are required</p>
+          <p class="form-sub">All fields marked * are required. Add clear photos so we can estimate accurately.</p>
 
           <div class="form-grid">
             <div class="form-group">
-              <label for="firstName">First Name *</label>
-              <input type="text" id="firstName" name="firstName" placeholder="John" autocomplete="given-name" required />
-              <span class="field-error" id="firstNameError">Please enter your first name</span>
-            </div>
-            <div class="form-group">
-              <label for="lastName">Last Name *</label>
-              <input type="text" id="lastName" name="lastName" placeholder="Smith" autocomplete="family-name" required />
-              <span class="field-error" id="lastNameError">Please enter your last name</span>
-            </div>
-            <div class="form-group">
-              <label for="email">Email Address *</label>
-              <input type="email" id="email" name="email" placeholder="you@email.com" autocomplete="email" required />
-              <span class="field-error" id="emailError">Please enter a valid email</span>
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" placeholder="John Smith" autocomplete="name" required />
+              <span class="field-error" id="nameError">Please enter your full name</span>
             </div>
             <div class="form-group">
               <label for="phone">Phone Number *</label>
@@ -992,47 +1015,49 @@
               <span class="field-error" id="phoneError">Please enter your phone number</span>
             </div>
             <div class="form-group">
-              <label for="year">Vehicle Year *</label>
-              <input type="number" id="year" name="year" placeholder="2020" min="1980" max="2026" required />
-              <span class="field-error" id="yearError">Please enter the vehicle year</span>
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="you@email.com" autocomplete="email" />
+              <span class="field-error" id="emailError">Please enter a valid email</span>
             </div>
             <div class="form-group">
-              <label for="make">Make *</label>
-              <input type="text" id="make" name="make" placeholder="Toyota" required />
-              <span class="field-error" id="makeError">Please enter the vehicle make</span>
+              <label for="vehicle">Vehicle</label>
+              <input type="text" id="vehicle" name="vehicle" placeholder="Year / Make / Model" />
             </div>
-            <div class="form-group">
-              <label for="model">Model *</label>
-              <input type="text" id="model" name="model" placeholder="Camry" required />
-              <span class="field-error" id="modelError">Please enter the vehicle model</span>
+          </div>
+
+          <div class="checkbox-card">
+            <input type="checkbox" id="insuranceCheck" name="going_through_insurance" value="Yes" />
+            <div>
+              <label for="insuranceCheck">Are you going through insurance?</label>
+              <p>Check this if you have already started a claim or have an insurance estimate.</p>
             </div>
-            <div class="form-group">
-              <label for="color">Color</label>
-              <input type="text" id="color" name="color" placeholder="Silver" />
+          </div>
+
+          <div id="insuranceFields" class="insurance-fields">
+            <div class="form-group full">
+              <label for="insuranceCompany">Insurance Company</label>
+              <input type="text" id="insuranceCompany" name="insurance_company" placeholder="State Farm, GEICO, Progressive, etc." />
             </div>
             <div class="form-group full">
-              <label for="damageType">Type of Damage *</label>
-              <select id="damageType" name="damageType" required>
-                <option value="">Select damage type...</option>
-                <option value="collision">Collision / Accident Damage</option>
-                <option value="dent">Dents / Dings</option>
-                <option value="hail">Hail Damage</option>
-                <option value="scratch">Scratches / Paint Damage</option>
-                <option value="frame">Frame / Structural Damage</option>
-                <option value="bumper">Bumper Repair / Replacement</option>
-                <option value="other">Other</option>
-              </select>
-              <span class="field-error" id="damageTypeError">Please select the type of damage</span>
+              <label for="claimNumber">Claim Number, if available</label>
+              <input type="text" id="claimNumber" name="claim_number" placeholder="Claim number" />
             </div>
             <div class="form-group full">
-              <label for="insurance">Insurance Company (if applicable)</label>
-              <input type="text" id="insurance" name="insurance" placeholder="State Farm, Progressive, etc." />
+              <label for="insuranceQuote">Upload insurance estimate/quote</label>
+              <input type="file" id="insuranceQuote" name="insurance_quote" accept=".pdf,.jpg,.jpeg,.png" />
             </div>
-            <div class="form-group full">
-              <label for="description">Describe the Damage *</label>
-              <textarea id="description" name="description" placeholder="Please describe what happened and where the damage is located on the vehicle..." required></textarea>
-              <span class="field-error" id="descriptionError">Please describe the damage</span>
-            </div>
+          </div>
+
+          <div class="form-group full" style="margin-top: 1rem;">
+            <label for="damagePhotos">Upload damage photos *</label>
+            <p class="form-note">Take photos far enough away to show the surrounding panels. Close-up photos are helpful too.</p>
+            <input type="file" id="damagePhotos" name="damage_photos" accept="image/*" multiple required />
+            <span class="field-error" id="damagePhotosError">Please upload at least one damage photo</span>
+          </div>
+
+          <div class="form-group full" style="margin-top: 1rem;">
+            <label for="description">Describe the Damage</label>
+            <textarea id="description" name="damage_description" placeholder="Tell us what happened, where the damage is, and anything else we should know."></textarea>
           </div>
 
           <div class="form-submit-row">
@@ -1116,17 +1141,21 @@
       return valid;
     }
 
+    function validateFileField(id) {
+      const el = document.getElementById(id);
+      const err = document.getElementById(id + 'Error');
+      const valid = el.files && el.files.length > 0;
+      el.classList.toggle('error', !valid);
+      if (err) err.classList.toggle('visible', !valid);
+      return valid;
+    }
+
     function validateForm() {
       const results = [
-        validateField('firstName', v => v.length > 0),
-        validateField('lastName', v => v.length > 0),
-        validateField('email', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)),
+        validateField('name', v => v.length > 0),
         validateField('phone', v => v.length >= 7),
-        validateField('year', v => v >= 1980 && v <= 2026),
-        validateField('make', v => v.length > 0),
-        validateField('model', v => v.length > 0),
-        validateField('damageType', v => v.length > 0),
-        validateField('description', v => v.length > 10),
+        validateField('email', v => v.length === 0 || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)),
+        validateFileField('damagePhotos'),
       ];
       return results.every(Boolean);
     }
@@ -1146,18 +1175,24 @@
       this.submit();
     });
 
+    const insuranceCheck = document.getElementById('insuranceCheck');
+    const insuranceFields = document.getElementById('insuranceFields');
+    insuranceCheck.addEventListener('change', function() {
+      insuranceFields.style.display = this.checked ? 'block' : 'none';
+    });
+
     // Live validation on blur
-    ['firstName','lastName','email','phone','year','make','model','damageType','description'].forEach(id => {
+    ['name','email','phone'].forEach(id => {
       const el = document.getElementById(id);
       if (!el) return;
       el.addEventListener('blur', () => {
-        if (id === 'email') validateField(id, v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
-        else if (id === 'year') validateField(id, v => v >= 1980 && v <= 2026);
+        if (id === 'email') validateField(id, v => v.length === 0 || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
         else if (id === 'phone') validateField(id, v => v.length >= 7);
-        else if (id === 'description') validateField(id, v => v.length > 10);
         else validateField(id, v => v.length > 0);
       });
     });
+
+    document.getElementById('damagePhotos').addEventListener('change', () => validateFileField('damagePhotos'));
   </script>
 </body>
 </html>
