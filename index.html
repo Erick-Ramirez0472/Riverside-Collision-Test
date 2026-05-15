@@ -966,7 +966,7 @@
         </div>
 
         <!-- FORM -->
-        <form class="quote-form" id="quoteForm" data-endpoint="https://riverside-quote-form.erickramirez0472.workers.dev" novalidate>
+        <form class="quote-form" id="quoteForm" action="https://riverside-quote-form.erickramirez0472.workers.dev" method="post" novalidate>
           <div class="form-title">Quote Request</div>
           <p class="form-sub">All fields marked * are required</p>
 
@@ -1131,8 +1131,8 @@
       return results.every(Boolean);
     }
 
-    // Quote form submission → Resend API via Netlify/Vercel serverless function
-    document.getElementById('quoteForm').addEventListener('submit', async function(e) {
+    // Quote form submission to the Cloudflare Worker
+    document.getElementById('quoteForm').addEventListener('submit', function(e) {
       e.preventDefault();
       if (!validateForm()) {
         showToast('Please check the form', 'Some required fields are missing or invalid.', true);
@@ -1143,42 +1143,7 @@
       btn.disabled = true;
       btn.classList.add('loading');
 
-      const data = {
-        firstName: document.getElementById('firstName').value.trim(),
-        lastName: document.getElementById('lastName').value.trim(),
-        email: document.getElementById('email').value.trim(),
-        phone: document.getElementById('phone').value.trim(),
-        year: document.getElementById('year').value.trim(),
-        make: document.getElementById('make').value.trim(),
-        model: document.getElementById('model').value.trim(),
-        color: document.getElementById('color').value.trim(),
-        damageType: document.getElementById('damageType').value,
-        insurance: document.getElementById('insurance').value.trim(),
-        description: document.getElementById('description').value.trim(),
-      };
-
-      try {
-        const endpoint = this.dataset.endpoint || '/api/send-quote';
-        const res = await fetch(endpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
-        });
-
-        if (res.ok) {
-          showToast('Quote Sent!', 'We\'ll be in touch within one business day.');
-          document.getElementById('quoteForm').reset();
-          document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
-        } else {
-          const err = await res.json().catch(() => ({}));
-          showToast('Something went wrong', err.message || 'Please try again or call us directly.', true);
-        }
-      } catch (err) {
-        showToast('Network error', 'Please try again or call us directly.', true);
-      } finally {
-        btn.disabled = false;
-        btn.classList.remove('loading');
-      }
+      this.submit();
     });
 
     // Live validation on blur
