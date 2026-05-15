@@ -169,19 +169,29 @@
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(212,43,43,0.3) 20%, rgba(212,43,43,0.3) 60%, transparent);
     }
-    .hero-photo {
+    .hero-comparisons {
       position: absolute;
       right: clamp(1rem, 6vw, 7rem);
-      width: min(34vw, 430px);
-      aspect-ratio: 16 / 9;
+      top: 15%;
+      width: min(42vw, 620px);
       z-index: 1;
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: clamp(4.5rem, 11vh, 7rem);
+    }
+    .hero-comparison-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .hero-photo {
+      position: relative;
+      aspect-ratio: 16 / 10;
       background: var(--dark2);
       border: 1px solid rgba(255,255,255,0.1);
       overflow: hidden;
       box-shadow: 0 22px 70px rgba(0,0,0,0.45);
     }
-    .hero-photo.before { top: 24%; }
-    .hero-photo.after { top: 56%; }
     .hero-photo::before {
       content: attr(data-label);
       position: absolute;
@@ -202,6 +212,11 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      opacity: 1;
+      transition: opacity 0.45s ease;
+    }
+    .hero-photo img.is-changing {
+      opacity: 0;
     }
     .hero-photo-placeholder {
       height: 100%;
@@ -212,6 +227,9 @@
       text-align: center;
       font-size: 0.9rem;
       line-height: 1.45;
+    }
+    .hero-photo-placeholder strong {
+      color: var(--light);
     }
 
     .hero-content {
@@ -785,8 +803,8 @@
       .nav-links { display: none; flex-direction: column; position: fixed; top: 82px; left: 0; right: 0; background: var(--dark2); padding: 1.5rem 2rem; gap: 1rem; z-index: 99; border-bottom: 1px solid rgba(255,255,255,0.08); }
       .nav-links.open { display: flex; }
       .nav-toggle { display: flex; }
-      .hero-photo { position: relative; right: auto; top: auto !important; width: 100%; margin-top: 1rem; }
-      .hero-photo.after { margin-bottom: 1rem; }
+      .hero-comparisons { position: relative; right: auto; top: auto; width: 100%; gap: 1rem; margin: 1.5rem 0; }
+      .hero-comparison-row { gap: 0.75rem; }
       .stats-inner { grid-template-columns: repeat(2, 1fr); }
       .stat:nth-child(2) { border-right: none; }
       .services-grid { grid-template-columns: 1fr; }
@@ -827,13 +845,27 @@
   <section class="hero" id="home">
     <div class="hero-bg"></div>
     <div class="hero-lines"></div>
-    <div class="hero-photo before" data-label="Before">
-      <img src="before-repair.jpg" alt="Vehicle damage before repair" onerror="this.hidden = true" />
-      <div class="hero-photo-placeholder">Add a photo named <strong>before-repair.jpg</strong> for the before repair image.</div>
-    </div>
-    <div class="hero-photo after" data-label="After">
-      <img src="after-repair.jpg" alt="Vehicle after Riverside repair" onerror="this.hidden = true" />
-      <div class="hero-photo-placeholder">Add a photo named <strong>after-repair.jpg</strong> for the after repair image.</div>
+    <div class="hero-comparisons" aria-label="Before and after repair photos">
+      <div class="hero-comparison-row" data-gallery="top">
+        <div class="hero-photo" data-label="Before" data-images="before-repair-1.jpg,before-repair-2.jpg,before-repair-3.jpg">
+          <img src="before-repair-1.jpg" alt="Vehicle damage before repair" onerror="this.hidden = true" />
+          <div class="hero-photo-placeholder">Add <strong>before-repair-1.jpg</strong>, <strong>before-repair-2.jpg</strong>, and matching after images.</div>
+        </div>
+        <div class="hero-photo" data-label="After" data-images="after-repair-1.jpg,after-repair-2.jpg,after-repair-3.jpg">
+          <img src="after-repair-1.jpg" alt="Vehicle after Riverside repair" onerror="this.hidden = true" />
+          <div class="hero-photo-placeholder">Add <strong>after-repair-1.jpg</strong>, <strong>after-repair-2.jpg</strong>, and matching before images.</div>
+        </div>
+      </div>
+      <div class="hero-comparison-row" data-gallery="bottom">
+        <div class="hero-photo" data-label="Before" data-images="before-repair-b-1.jpg,before-repair-b-2.jpg,before-repair-b-3.jpg">
+          <img src="before-repair-b-1.jpg" alt="Second vehicle damage before repair" onerror="this.hidden = true" />
+          <div class="hero-photo-placeholder">Add <strong>before-repair-b-1.jpg</strong>, <strong>before-repair-b-2.jpg</strong>, and matching after images.</div>
+        </div>
+        <div class="hero-photo" data-label="After" data-images="after-repair-b-1.jpg,after-repair-b-2.jpg,after-repair-b-3.jpg">
+          <img src="after-repair-b-1.jpg" alt="Second vehicle after Riverside repair" onerror="this.hidden = true" />
+          <div class="hero-photo-placeholder">Add <strong>after-repair-b-1.jpg</strong>, <strong>after-repair-b-2.jpg</strong>, and matching before images.</div>
+        </div>
+      </div>
     </div>
     <div class="hero-content">
       <div class="hero-badge">Utah's Trusted Body Shop</div>
@@ -1195,6 +1227,41 @@
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 5000);
     }
+
+    // Before/after hero galleries. Matching indexes stay paired.
+    document.querySelectorAll('.hero-comparison-row').forEach(row => {
+      const photos = [...row.querySelectorAll('.hero-photo')].map(photo => {
+        const img = photo.querySelector('img');
+        const images = (photo.dataset.images || '').split(',').map(src => src.trim()).filter(Boolean);
+
+        img.addEventListener('load', () => {
+          img.hidden = false;
+          img.classList.remove('is-changing');
+        });
+        img.addEventListener('error', () => {
+          img.hidden = true;
+          img.classList.remove('is-changing');
+        });
+
+        return { img, images };
+      });
+
+      const slideCount = Math.max(...photos.map(photo => photo.images.length));
+      if (slideCount < 2) return;
+
+      let index = 0;
+      setInterval(() => {
+        index = (index + 1) % slideCount;
+        photos.forEach(({ img, images }) => {
+          const next = images[index % images.length];
+          if (!next || img.getAttribute('src') === next) return;
+          img.classList.add('is-changing');
+          setTimeout(() => {
+            img.src = next;
+          }, 180);
+        });
+      }, 4500);
+    });
 
     // Form validation helpers
     function validateField(id, condition) {
