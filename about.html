@@ -28,7 +28,12 @@
       background: var(--black);
       color: var(--white);
       font-family: var(--font-body);
+      overflow-x: hidden;
+      -webkit-text-size-adjust: 100%;
     }
+    body.nav-open { overflow: hidden; }
+    img, svg, video, iframe { max-width: 100%; }
+    a, button { font: inherit; }
     body::before {
       content: '';
       position: fixed;
@@ -65,6 +70,7 @@
       align-items: center;
       gap: 0.8rem;
       flex-shrink: 0;
+      min-width: 0;
     }
     .brand-fallback {
       display: inline-flex;
@@ -89,6 +95,10 @@
       font-size: 1rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      text-align: center;
     }
     .nav-links a:hover,
     .nav-links a.active { color: var(--cyan); }
@@ -98,11 +108,31 @@
       padding: 0.5rem 1.4rem;
       clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
     }
+    .nav-toggle {
+      display: none;
+      min-width: 48px;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      padding: 6px;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      transition: transform 0.3s, opacity 0.3s;
+    }
     main {
       padding: 150px 2rem 5rem;
     }
     .container {
-      max-width: 1100px;
+      width: min(100%, 1100px);
       margin: 0 auto;
     }
     .section-label {
@@ -189,11 +219,13 @@
       grid-template-columns: 1fr 0.45fr;
       gap: 2rem;
       align-items: start;
+      min-width: 0;
     }
     .story {
       background: var(--dark2);
       border: 1px solid rgba(255,255,255,0.08);
       padding: 2rem;
+      min-width: 0;
     }
     .story p {
       color: var(--light);
@@ -205,6 +237,7 @@
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      min-width: 0;
     }
     .badge-card,
     .fact-card {
@@ -286,6 +319,9 @@
       text-transform: uppercase;
       text-decoration: none;
       padding: 0.85rem 1.5rem;
+      min-width: 0;
+      line-height: 1.1;
+      text-align: center;
     }
     .btn-primary {
       background: var(--red);
@@ -305,18 +341,63 @@
       font-size: 0.85rem;
     }
     @media (max-width: 900px) {
-      nav { height: 82px; padding: 0 1rem; }
-      .brand-logo { font-size: 1.15rem; gap: 0.55rem; }
-      .nav-links { gap: 1rem; font-size: 0.9rem; }
+      nav { height: 76px; padding: 0 1rem; }
+      .brand-logo { font-size: clamp(1rem, 4.6vw, 1.35rem); gap: 0.45rem; max-width: calc(100vw - 84px); }
+      .brand-fallback { white-space: normal; row-gap: 0; }
+      .nav-toggle { display: flex; }
+      .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+      .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+      .nav-links {
+        position: fixed;
+        top: 76px;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.25rem;
+        max-height: 0;
+        overflow: hidden;
+        visibility: hidden;
+        pointer-events: none;
+        padding: 0 1rem;
+        background: rgba(17,17,17,0.98);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        box-shadow: 0 24px 45px rgba(0,0,0,0.42);
+        z-index: 99;
+        transition: max-height 0.28s ease, padding 0.28s ease;
+      }
+      .nav-links.open { max-height: calc(100vh - 76px); padding: 0.85rem 1rem 1rem; overflow-y: auto; visibility: visible; pointer-events: auto; }
+      .nav-links a { width: 100%; min-height: 48px; justify-content: center; }
+      .btn { min-height: 48px; }
+      main { padding: 112px 1rem 4rem; }
       .about-grid { grid-template-columns: 1fr; }
-      .photo-slot { min-height: 340px; }
+      .photo-slot { min-height: 320px; }
     }
     @media (max-width: 760px) {
-      .nav-links a:not(.nav-cta) { display: none; }
-      main { padding: 128px 1rem 4rem; }
+      html { scroll-padding-top: 82px; }
+      nav { padding: 0 0.75rem; }
+      .brand-logo { font-size: clamp(0.92rem, 4.25vw, 1.12rem); max-width: calc(100vw - 76px); letter-spacing: 0.035em; }
+      .brand-fallback { gap: 0.28rem; flex-wrap: wrap; }
+      .nav-links.open { padding-left: 0.75rem; padding-right: 0.75rem; }
+      main { padding: 100px 0.85rem 3.25rem; }
+      h1 { font-size: clamp(2.8rem, 15vw, 4.35rem); line-height: 0.94; }
+      .lead { font-size: 1rem; }
       .story,
       .badge-card,
       .fact-card { padding: 1.35rem; }
+      .photo-slot { min-height: 240px; }
+      .photo-placeholder { padding: 1.25rem; }
+      .photo-placeholder strong { font-size: clamp(1.8rem, 10vw, 2.7rem); line-height: 1; }
+      .actions { flex-direction: column; align-items: stretch; }
+      .btn { width: 100%; min-height: 48px; }
+      footer { padding: 1.5rem 1rem; }
+    }
+    @media (max-width: 380px) {
+      .brand-logo { font-size: 0.88rem; letter-spacing: 0.02em; }
+      .section-label { letter-spacing: 0.16em; }
+      .accent-line { width: 30px; margin-right: 0.55rem; }
     }
   </style>
 </head>
@@ -325,7 +406,7 @@
     <a href="index.html" class="brand-logo" aria-label="Riverside Collision Repair">
       <span class="brand-fallback">Riverside <span class="accent">Collision</span> <span class="small">Repair</span></span>
     </a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="index.html#services">Services</a></li>
       <li><a href="index.html#why">Why Us</a></li>
       <li><a href="about.html" class="active">About</a></li>
@@ -333,6 +414,9 @@
       <li><a href="index.html#quote">Contact</a></li>
       <li><a href="index.html#quote" class="nav-cta">Free Quote</a></li>
     </ul>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-controls="navLinks" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <main>
@@ -395,5 +479,25 @@
   <footer>
     &copy; 2026 Riverside Collision Repair. 1649 N 550 W, Provo, UT 84660.
   </footer>
+
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    function setNavOpen(isOpen) {
+      navLinks.classList.toggle('open', isOpen);
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      document.body.classList.toggle('nav-open', isOpen);
+    }
+
+    navToggle.addEventListener('click', () => setNavOpen(!navLinks.classList.contains('open')));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setNavOpen(false)));
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') setNavOpen(false);
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 900) setNavOpen(false);
+    });
+  </script>
 </body>
 </html>
