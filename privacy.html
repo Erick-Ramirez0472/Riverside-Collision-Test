@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Location | Riverside Collision Repair</title>
-  <meta name="description" content="Visit Riverside Collision Repair at 1649 N 550 W, Provo, Utah 84660." />
+  <title>Privacy Policy | Riverside Collision Repair</title>
+  <meta name="description" content="How Riverside Collision Repair collects, uses, and protects the information you share with us." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -12,7 +12,6 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --red: #d42b2b;
-      --red-dark: #a81f1f;
       --red-text: #ee5555;
       --cyan: #3ad4f5;
       --black: #0a0a0a;
@@ -26,10 +25,10 @@
       --font-body: 'Barlow', sans-serif;
     }
     body {
+      min-height: 100vh;
       background: var(--black);
       color: var(--white);
       font-family: var(--font-body);
-      min-height: 100vh;
       overflow-x: hidden;
       -webkit-text-size-adjust: 100%;
     }
@@ -40,10 +39,10 @@
       content: '';
       position: fixed;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
       pointer-events: none;
       z-index: 999;
       opacity: 0.35;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
     }
     .skip-link {
       position: absolute;
@@ -101,9 +100,9 @@
     .brand-fallback .small { font-size: 0.72em; }
     .nav-links {
       display: flex;
+      align-items: center;
       gap: 2rem;
       list-style: none;
-      align-items: center;
     }
     .nav-links a {
       color: var(--light);
@@ -150,11 +149,8 @@
       padding: 150px 2rem 5rem;
     }
     .container {
-      width: min(100%, 1100px);
+      width: min(100%, 760px);
       margin: 0 auto;
-    }
-    .location-header {
-      margin-bottom: 2.5rem;
     }
     .section-label {
       font-family: var(--font-head);
@@ -175,107 +171,48 @@
     }
     h1 {
       font-family: var(--font-head);
-      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-size: clamp(2.5rem, 6vw, 4rem);
       font-weight: 900;
-      line-height: 0.9;
+      line-height: 0.95;
       text-transform: uppercase;
       margin-bottom: 1rem;
     }
     h1 span { color: var(--cyan); }
-    .lead {
-      max-width: 620px;
+    .updated {
       color: var(--gray);
-      line-height: 1.7;
-      font-size: 1.05rem;
+      font-size: 0.85rem;
+      margin-bottom: 2.5rem;
     }
-    .location-grid {
-      display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
-      gap: 2rem;
-      align-items: stretch;
-      min-width: 0;
-    }
-    .info-panel {
+    .policy {
       background: var(--dark2);
       border: 1px solid rgba(255,255,255,0.08);
       border-top: 2px solid var(--cyan);
-      padding: 2rem;
-      min-width: 0;
+      padding: 2.25rem;
     }
-    .info-panel h2 {
+    .policy h2 {
       font-family: var(--font-head);
-      font-size: 1.5rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-    }
-    .contact-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      margin-bottom: 2rem;
-    }
-    .contact-item {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-    .contact-item strong {
-      font-family: var(--font-head);
-      font-size: 0.78rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gray);
-    }
-    .contact-item a,
-    .contact-item span {
-      color: var(--light);
-      text-decoration: none;
-      line-height: 1.5;
-    }
-    .contact-item a:hover { color: var(--cyan); }
-    .actions {
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-head);
+      font-size: 1.3rem;
       font-weight: 800;
-      letter-spacing: 0.1em;
       text-transform: uppercase;
-      text-decoration: none;
-      padding: 0.85rem 1.5rem;
-      min-width: 0;
-      line-height: 1.1;
-      text-align: center;
+      letter-spacing: 0.03em;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
     }
-    .btn-primary {
-      background: var(--red);
-      color: var(--white);
-      clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    .policy h2:first-child { margin-top: 0; }
+    .policy p {
+      color: var(--light);
+      line-height: 1.75;
+      margin-bottom: 1rem;
     }
-    .btn-secondary {
-      border: 1px solid var(--cyan);
-      color: var(--cyan);
+    .policy p:last-child { margin-bottom: 0; }
+    .policy ul {
+      color: var(--light);
+      line-height: 1.75;
+      margin: 0 0 1rem 1.25rem;
     }
-    .map-panel {
-      min-height: 520px;
-      background: var(--dark2);
-      border: 1px solid rgba(255,255,255,0.08);
-      overflow: hidden;
-      min-width: 0;
-    }
-    .map-panel iframe {
-      width: 100%;
-      height: 100%;
-      min-height: 520px;
-      border: 0;
-      filter: grayscale(0.2) contrast(1.05);
-    }
+    .policy li { margin-bottom: 0.4rem; }
+    .policy a { color: var(--cyan); }
+    .policy strong { color: var(--white); }
     footer {
       border-top: 1px solid rgba(255,255,255,0.08);
       background: var(--dark2);
@@ -284,6 +221,8 @@
       text-align: center;
       font-size: 0.85rem;
     }
+    footer a { color: var(--gray); }
+    footer a:hover { color: var(--cyan); }
     @media (max-width: 900px) {
       nav { height: 76px; padding: 0 1rem; }
       .brand-logo { font-size: clamp(1rem, 4.6vw, 1.35rem); gap: 0.45rem; max-width: calc(100vw - 84px); }
@@ -314,33 +253,20 @@
       }
       .nav-links.open { max-height: calc(100vh - 76px); padding: 0.85rem 1rem 1rem; overflow-y: auto; visibility: visible; pointer-events: auto; }
       .nav-links a { width: 100%; min-height: 48px; justify-content: center; }
-      .btn { min-height: 48px; }
       main { padding: 112px 1rem 4rem; }
-      .location-grid { grid-template-columns: 1fr; }
-      .map-panel,
-      .map-panel iframe { min-height: 420px; }
+      .policy { padding: 1.5rem; }
     }
-    @media (max-width: 700px) {
+    @media (max-width: 760px) {
       html { scroll-padding-top: 82px; }
       nav { padding: 0 0.75rem; }
       .brand-logo { font-size: clamp(0.92rem, 4.25vw, 1.12rem); max-width: calc(100vw - 76px); letter-spacing: 0.035em; }
       .brand-fallback { gap: 0.28rem; flex-wrap: wrap; }
       .nav-links.open { padding-left: 0.75rem; padding-right: 0.75rem; }
       main { padding: 100px 0.85rem 3.25rem; }
-      .location-header { margin-bottom: 2rem; }
-      h1 { font-size: clamp(2.8rem, 15vw, 4.35rem); line-height: 0.94; }
-      .lead { font-size: 1rem; }
-      .info-panel { padding: 1.5rem; }
-      .btn { min-height: 48px; }
-      .map-panel,
-      .map-panel iframe { min-height: 340px; }
+      h1 { font-size: clamp(2.2rem, 12vw, 3rem); line-height: 1; }
+      .policy { padding: 1.25rem; }
+      .policy h2 { font-size: 1.15rem; }
       footer { padding: 1.5rem 1rem; }
-    }
-    @media (max-width: 380px) {
-      .brand-logo { font-size: 0.88rem; letter-spacing: 0.02em; }
-      .section-label { letter-spacing: 0.16em; }
-      .accent-line { width: 30px; margin-right: 0.55rem; }
-      .info-panel { padding: 1.25rem; }
     }
   </style>
 </head>
@@ -354,7 +280,7 @@
       <li><a href="index.html#services">Services</a></li>
       <li><a href="index.html#why">Why Us</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="location.html" class="active">Location</a></li>
+      <li><a href="location.html">Location</a></li>
       <li><a href="index.html#quote">Contact</a></li>
       <li><a href="index.html#quote" class="nav-cta">Free Quote</a></li>
     </ul>
@@ -365,50 +291,75 @@
 
   <main id="main">
     <div class="container">
-      <div class="location-header">
-        <div class="section-label"><span class="accent-line"></span>Visit Riverside</div>
-        <h1>Our <span>Location</span></h1>
-        <p class="lead">Stop by Riverside Collision Repair in Provo for a repair estimate, insurance claim support, or to talk through your vehicle damage with the team.</p>
-      </div>
+      <div class="section-label"><span class="accent-line"></span>Legal</div>
+      <h1>Privacy <span>Policy</span></h1>
+      <p class="updated">Last updated: August 16, 2026</p>
 
-      <div class="location-grid">
-        <section class="info-panel" aria-labelledby="location-info-title">
-          <h2 id="location-info-title">Shop Details</h2>
-          <div class="contact-list">
-            <div class="contact-item">
-              <strong>Address</strong>
-              <a href="https://www.google.com/maps/search/?api=1&query=1649%20N%20550%20W%2C%20Provo%2C%20UT%2084660" target="_blank" rel="noopener">1649 N 550 W<br />Provo, UT 84660</a>
-            </div>
-            <div class="contact-item">
-              <strong>Phone</strong>
-              <a href="tel:+18013734900">(801) 373-4900</a>
-            </div>
-            <div class="contact-item">
-              <strong>Hours</strong>
-              <span>Mon-Fri 8:30AM-5:30PM</span>
-            </div>
-          </div>
-          <div class="actions">
-            <a class="btn btn-primary" href="index.html#quote">Get a Free Quote</a>
-            <a class="btn btn-secondary" href="https://www.google.com/maps/dir/?api=1&destination=1649%20N%20550%20W%2C%20Provo%2C%20UT%2084660" target="_blank" rel="noopener">Get Directions</a>
-          </div>
-        </section>
+      <div class="policy">
+        <h2>Overview</h2>
+        <p>Riverside Collision Repair ("we," "us," "our") operates this website to help customers in Utah County request collision repair quotes and learn about our services. This policy explains what information we collect through the site, how we use it, and the choices you have.</p>
 
-        <section class="map-panel" aria-label="Map to Riverside Collision Repair">
-          <iframe
-            title="Map to Riverside Collision Repair"
-            loading="lazy"
-            allowfullscreen
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=1649%20N%20550%20W%2C%20Provo%2C%20UT%2084660&output=embed">
-          </iframe>
-        </section>
+        <h2>Information We Collect</h2>
+        <p>When you submit a quote request, we collect the information you choose to provide, which may include:</p>
+        <ul>
+          <li>Your name, phone number, and email address</li>
+          <li>Your vehicle's year, make, and model</li>
+          <li>Whether you're going through insurance, and if so, your insurance company and claim number</li>
+          <li>Photos you upload of your vehicle's damage, VIN, and any insurance estimate or quote documents</li>
+          <li>Any details you type into the damage description field</li>
+        </ul>
+        <p>We do not collect payment information, Social Security numbers, or other sensitive government ID numbers through this site.</p>
+
+        <h2>How We Use Your Information</h2>
+        <p>We use the information you submit to:</p>
+        <ul>
+          <li>Respond to your quote request and estimate your repair</li>
+          <li>Contact you by phone, email, or text about your request or an active repair</li>
+          <li>Coordinate with your insurance company on your behalf, if you've asked us to</li>
+        </ul>
+        <p>We do not use your contact information for unsolicited marketing, and we do not sell your personal information to third parties.</p>
+
+        <h2>How Information Is Shared</h2>
+        <p>We use a small number of service providers to run this site and process quote requests, who process data on our behalf:</p>
+        <ul>
+          <li><strong>Form and email delivery</strong> — your quote request and attached photos are sent to us via Cloudflare Workers and Resend, an email delivery service.</li>
+          <li><strong>Website hosting</strong> — this site is hosted on GitHub Pages.</li>
+          <li><strong>Fonts</strong> — this site loads typefaces from Google Fonts, which may receive your IP address as part of that request.</li>
+        </ul>
+        <p>If you tell us you're working with an insurance company, we may share relevant repair and claim details with that insurer to coordinate your claim. Otherwise, we don't share your information with third parties except as required by law.</p>
+
+        <h2>Data Retention</h2>
+        <p>We keep the information from your quote request for as long as needed to respond to your inquiry and, if you become a customer, for the duration of our business relationship and any period required for our business records. You can ask us to delete your information at any time — see "Your Choices" below.</p>
+
+        <h2>Your Choices</h2>
+        <p>You can ask us to access, correct, or delete the personal information we hold about you by contacting us using the information below. We'll respond to reasonable requests as promptly as we can.</p>
+
+        <h2>Cookies &amp; Tracking</h2>
+        <p>This site does not currently use analytics or advertising cookies. If that changes in the future, we'll update this policy and, where required, ask for your consent first.</p>
+
+        <h2>Security</h2>
+        <p>We take reasonable steps to protect the information submitted through this site. However, no method of transmission over the internet is completely secure, and we can't guarantee absolute security.</p>
+
+        <h2>Children's Privacy</h2>
+        <p>This site is intended for adults and is not directed at children under 13. We don't knowingly collect personal information from children.</p>
+
+        <h2>Changes to This Policy</h2>
+        <p>We may update this policy from time to time. The "Last updated" date at the top of this page reflects the most recent revision.</p>
+
+        <h2>Contact Us</h2>
+        <p>If you have questions about this policy or want to make a request about your information, reach us at:</p>
+        <p>
+          Riverside Collision Repair<br />
+          1649 N 550 W, Provo, UT 84660<br />
+          Phone: <a href="tel:+18013734900">(801) 373-4900</a><br />
+          Email: <a href="mailto:info@riversidecollision.com">info@riversidecollision.com</a>
+        </p>
       </div>
     </div>
   </main>
 
   <footer>
-    &copy; 2026 Riverside Collision Repair. 1649 N 550 W, Provo, UT 84660. <a href="privacy.html" style="color: var(--gray);">Privacy Policy</a>
+    &copy; 2026 Riverside Collision Repair. 1649 N 550 W, Provo, UT 84660. <a href="privacy.html">Privacy Policy</a>
   </footer>
 
   <script>
